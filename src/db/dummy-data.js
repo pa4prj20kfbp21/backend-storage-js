@@ -8,7 +8,7 @@ import { PlantPart } from "./plant-part-schema"
     Mainly for development/testing purposes.
 */
 
-// IDs 0 to 2 for 20210506, rest for 20210507
+// IDs 0 to 3 for 20210506, rest for 20210507
 const plantPart = [
     new PlantPart({
         EasyId: 0,
@@ -101,74 +101,74 @@ const objectData = [
 // Highlighting boxes information 
 const boundingBoxData = [
     new BoundingBoxData({ // 20210506/1.png
-        X:80,
-        Y:204,
-        Height:135,
-        Width:132,
+        X: 80,
+        Y: 204,
+        Height: 135,
+        Width: 132,
         Color: "yellow",
         ObjectID: objectData[0]._id
     }),
     new BoundingBoxData({ // 20210506/1.png
-        X:196,
-        Y:177,
-        Height:120,
-        Width:128,
+        X: 196,
+        Y: 177,
+        Height: 120,
+        Width: 128,
         Color: "yellow",
         ObjectID: objectData[1]._id
     }),
     new BoundingBoxData({ // 20210506/1.png
-        X:85,
-        Y:19,
-        Height:60,
-        Width:75,
+        X: 85,
+        Y: 19,
+        Height: 60,
+        Width: 75,
         Color: "red",
         ObjectID: objectData[2]._id
     }),
     new BoundingBoxData({ // 20210506/1.png
-        X:179,
-        Y:50,
-        Height:67,
-        Width:50,
+        X: 179,
+        Y: 50,
+        Height: 67,
+        Width: 50,
         Color: "red",
         ObjectID: objectData[3]._id
     }),
     new BoundingBoxData({ // 20210507/1.png
-        X:80,
-        Y:204,
-        Height:135,
-        Width:132,
+        X: 51,
+        Y: 106,
+        Height: 98,
+        Width: 126,
         Color: "yellow",
         ObjectID: objectData[4]._id
     }),
     new BoundingBoxData({ // 20210507/1.png
-        X:80,
-        Y:204,
-        Height:135,
-        Width:132,
+        X: 29,
+        Y: 147,
+        Height: 130,
+        Width: 141,
         Color: "yellow",
         ObjectID: objectData[5]._id
     }),
     new BoundingBoxData({ // 20210507/1.png
-        X:85,
-        Y:19,
-        Height:60,
-        Width:75,
+        X: 302,
+        Y: 0,
+        Height: 138,
+        Width: 93,
         Color: "red",
         ObjectID: objectData[6]._id
     }),
     new BoundingBoxData({ // 20210507/2.png
-        X:80,
-        Y:204,
-        Height:135,
-        Width:132,
+        X: 110,
+        Y: 39,
+        Height: 96,
+        Width: 112,
         Color: "yellow",
         ObjectID: objectData[4]._id
     }),
     new BoundingBoxData({ // 20210507/2.png
-        X:80,
-        Y:204,
-        Height:135,
-        Width:132,
+        X: 135,
+        Y: 80,
+        Height: 135,
+        Width: 132,
         Color: "yellow",
         ObjectID: objectData[5]._id
     })
@@ -178,25 +178,25 @@ const boundingBoxData = [
 const model2D = [
     new Model2D({
         ImageURL: "20210506/1.png",
-        BoundingBoxData: [
-            boundingBoxData[0]._id, 
-            boundingBoxData[1]._id, 
-            boundingBoxData[2]._id, 
-            boundingBoxData[3]._id, 
+        BoundingBoxes: [
+            boundingBoxData[0]._id,
+            boundingBoxData[1]._id,
+            boundingBoxData[2]._id,
+            boundingBoxData[3]._id,
         ]
     }),
     new Model2D({
         ImageURL: "20210507/1.png",
-        BoundingBoxData: [
-            boundingBoxData[4]._id, 
-            boundingBoxData[5]._id, 
-            boundingBoxData[6]._id 
+        BoundingBoxes: [
+            boundingBoxData[4]._id,
+            boundingBoxData[5]._id,
+            boundingBoxData[6]._id
         ]
     }),
     new Model2D({
         ImageURL: "20210507/2.png",
-        BoundingBoxData: [
-            boundingBoxData[7]._id, 
+        BoundingBoxes: [
+            boundingBoxData[7]._id,
             boundingBoxData[8]._id
         ]
     })

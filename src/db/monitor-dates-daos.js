@@ -6,8 +6,22 @@ export async function lazyRetrieveAllMonitorDates(){
     return listMonitorDates;
 }
 
-export async function retrieveById(object_id){
-    return await MonitorDates.findById(object_id);
+export async function retrieveById(id){
+    return await MonitorDates.findById(id);
+}
+
+export async function trimmedRetrieveById(id){
+    const data = await retrieveById(id);
+    return convertToDto(data);
+}
+
+function convertToDto(date){
+    return {
+        Name: date.Name,
+        Date: date.MonitorDate,
+        RGBImages: date.RGBImages,
+        EnvironmentConditions: date.EnvironmentConditions
+    }
 }
 
 function convertToLazyDto(date){

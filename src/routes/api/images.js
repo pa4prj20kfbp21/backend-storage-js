@@ -1,6 +1,4 @@
 import express from 'express';
-import { existsSync, readFileSync } from 'fs';
-import path from 'path';
 
 // const HTTP_OK = 200; // Not really needed; this is the default if you don't set something else.
 const HTTP_CREATED = 201;
