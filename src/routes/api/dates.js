@@ -11,7 +11,6 @@ const HTTP_BAD_REQUEST = 400;
 
 const router = express.Router();
 
-// TODO Exercise Four: Add your RESTful routes here.
 
 /**
  * A trick to include the check for a valid id in one place, rather than in every single method that needs it.

@@ -204,7 +204,7 @@ const model2D = [
 
 const monitorDates = [
     new MonitorDates({
-        MonitorDate: Date.parse("06/05/2021"),
+        MonitorDate: 1620302400000,
         Name: "6th May 2021",
         RGBImages: [
             model2D[0]._id
@@ -212,7 +212,7 @@ const monitorDates = [
         EnvironmentConditions: objectData[7]._id
     }),
     new MonitorDates({
-        MonitorDate: Date.parse("07/05/2021"),
+        MonitorDate: 1620388800000,
         Name: "7th May 2021",
         RGBImages: [
             model2D[1]._id,
