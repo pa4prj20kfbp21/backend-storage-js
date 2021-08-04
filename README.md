@@ -19,6 +19,7 @@ Run the following command to populate the database.
 ```bash
 npm run init-db
 ```
+DO NOT run this in production as this clears all the data in the database.
 
 ## Running the server
 Run the command in the working directory to start in development mode.
