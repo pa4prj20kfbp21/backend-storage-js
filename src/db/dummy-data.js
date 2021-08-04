@@ -166,8 +166,8 @@ const boundingBoxData = [
     }),
     new BoundingBoxData({ // 20210507/2.png
         X: 135,
-        Y: 80,
-        Height: 135,
+        Y: 70,
+        Height: 120,
         Width: 132,
         Color: "yellow",
         ObjectID: objectData[5]._id
