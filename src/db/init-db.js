@@ -10,6 +10,9 @@ import { PlantPart } from './plant-part-schema';
 import { ObjectData } from './object-data-schema';
 import { BoundingBoxData } from './bounding-box-schema';
 import { Model2D } from './model-2d-schema';
+import path from 'path';
+import { execSync } from 'child_process';
+import { existsSync, mkdirSync } from 'fs';
 
 main();
 
@@ -24,6 +27,15 @@ async function main() {
     // Disconnect when complete
     await mongoose.disconnect();
     console.log('Disconnected from database!');
+
+    // Setup the file system for image storage.
+    const imageStorePath = path.join(__dirname.replace('/src/db', '/public/api')); 
+    if(!existsSync(imageStorePath + '/images')){
+        mkdirSync(imageStorePath + '/images', 0o744);
+
+        // Unix command, may not work on Windows. Pull examples to storage.
+        execSync(`cp -r ${imageStorePath + '/examples/*'} ${imageStorePath + '/images'}`) 
+    }
 }
 
 async function clearDatabase() {
