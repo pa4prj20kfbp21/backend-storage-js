@@ -1,7 +1,7 @@
 import { MonitorDates } from "./monitor-dates-schema";
 
 export async function lazyRetrieveAllMonitorDates(){
-    const listMonitorDates = await MonitorDates.find();
+    const listMonitorDates = await MonitorDates.find().sort({MonitorDate: "asc"});
     listMonitorDates.forEach((o,i,a) => {a[i] = convertToLazyDto(o)});
     return listMonitorDates;
 }
