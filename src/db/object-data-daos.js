@@ -10,6 +10,10 @@ export async function eagerRetrieveById(object_id){
     return await eagerConvertToDto(data);
 }
 
+export async function retrieveAllByPlantID(plant_id){
+    return await ObjectData.find({Object: plant_id});
+}
+
 async function eagerConvertToDto(objectData){
     if(objectData["Object"]){
         const plantPart = await PlantPart.trimmedRetrieveById(objectData["Object"]);
