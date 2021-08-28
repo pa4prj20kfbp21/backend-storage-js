@@ -130,7 +130,7 @@ const boundingBoxData = [
         Height: 98,
         Width: 126,
         Color: "yellow",
-        ObjectID: objectData[1]._id
+        ObjectID: objectData[0]._id
     }),
     new BoundingBoxData({ // 20210507/1.png
         X: 29,
@@ -138,7 +138,7 @@ const boundingBoxData = [
         Height: 130,
         Width: 141,
         Color: "yellow",
-        ObjectID: objectData[2]._id
+        ObjectID: objectData[1]._id
     }),
     new BoundingBoxData({ // 20210507/1.png
         X: 302,
