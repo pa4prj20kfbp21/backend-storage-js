@@ -39,6 +39,15 @@ const objectDataSchema = new Schema({
     timestamps: {}
 });
 
+objectDataSchema.pre('save', function (next) {
+    now = new Date();
+    this.updatedAt = now;
+    if (!this.createdAt) {
+        this.createdAt = now;
+    }
+    next();
+});
+
 const ObjectData = mongoose.model('object_data', objectDataSchema);
 
 export { ObjectData };

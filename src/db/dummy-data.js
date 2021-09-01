@@ -12,23 +12,28 @@ import { PlantPart } from "./plant-part-schema"
 const plantPart = [
     new PlantPart({
         EasyId: 0,
-        Name: "Red Tomato"
+        Name: "Red Tomato",
+        createdAt: 1620302400000
     }),
     new PlantPart({
         EasyId: 1,
-        Name: "Red Tomato"
+        Name: "Red Tomato",
+        createdAt: 1620302400000
     }),
     new PlantPart({
         EasyId: 2,
-        Name: "Leaf"
+        Name: "Leaf",
+        createdAt: 1620302400000
     }),
     new PlantPart({
         EasyId: 3,
-        Name: "Leaf"
+        Name: "Leaf",
+        createdAt: 1620302400000
     }),
     new PlantPart({
         EasyId: 4,
-        Name: "Leaf"
+        Name: "Leaf",
+        createdAt: 1620388800000
     })
 ]
 
@@ -38,43 +43,50 @@ const objectData = [
         Data: {
             Volume: "65ml"
         },
-        Object: plantPart[0]._id
+        Object: plantPart[0]._id,
+        createdAt: 1620302400000
     }),
     new ObjectData({
         Data: {
             Volume: "55ml"
         },
-        Object: plantPart[1]._id
+        Object: plantPart[1]._id,
+        createdAt: 1620302400000
     }),
     new ObjectData({
         Data: {
             Length: "2.4cm"
         },
-        Object: plantPart[2]._id
+        Object: plantPart[2]._id,
+        createdAt: 1620302400000
     }),
     new ObjectData({
         Data: {
             Length: "2.2cm"
         },
-        Object: plantPart[3]._id
+        Object: plantPart[3]._id,
+        createdAt: 1620302400000
     }),
     new ObjectData({
         Data: {
             Volume: "65ml"
         },
-        Object: plantPart[0]._id
+        Object: plantPart[0]._id,
+        createdAt: 1620388800000
     }),
     new ObjectData({
         Data: {
             Volume: "55ml"
         },
-        Object: plantPart[1]._id
+        Object: plantPart[1]._id,
+        createdAt: 1620388800000
     }),
     new ObjectData({
         Data: {
             Length: "4.7cm"
         },
-        Object: plantPart[4]._id
+        Object: plantPart[4]._id,
+        createdAt: 1620388800000
     }),
     new ObjectData({
         Data: {
