@@ -6,6 +6,12 @@ export async function lazyRetrieveAllMonitorDates(){
     return listMonitorDates;
 }
 
+export async function retrieveByEnvironmentReference(id){
+    const listMonitorDates = await MonitorDates.find({EnvironmentConditions: id});
+    listMonitorDates.forEach((o,i,a) => {a[i] = convertToDto(o)});
+    return listMonitorDates;
+}
+
 export async function retrieveById(id){
     return await MonitorDates.findById(id);
 }
