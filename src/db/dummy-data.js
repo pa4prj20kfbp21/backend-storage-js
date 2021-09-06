@@ -90,15 +90,17 @@ const objectData = [
     }),
     new ObjectData({
         Data: {
-            Temperature: "20*C",
+            Temperature: "20°C",
             "Relative Humidity": "29%"
-        }
+        },
+        createdAt: 1620302400000
     }),
     new ObjectData({
         Data: {
-            Length: "19*C",
+            Temperature: "19°C",
             "Relative Humidity": "28%"
-        }
+        },
+        createdAt: 1620388800000
     }),
 ]
 
