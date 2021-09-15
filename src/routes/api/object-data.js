@@ -45,4 +45,22 @@ router.get('/plant-part/:id', async (req, res) => {
     }
 });
 
+router.get('/info/:id', async (req, res) => {
+
+    // Uncomment this code if you want to introduce an artificial delay.
+    // setTimeout(async () => {
+    //     res.json(await todosDao.retrieveAllTodos());
+    // }, 2000);
+
+    // Comment this code if you want to introduce an artificial delay.
+    const { id } = req.params;
+
+    if(id){
+        res.json(await objData.retrieveById(id));
+    }
+    else{
+        res.sendStatus(HTTP_BAD_REQUEST);
+    }
+});
+
 export default router;
