@@ -69,14 +69,14 @@ const objectData = [
     }),
     new ObjectData({
         Data: {
-            Volume: "65ml"
+            Volume: "66ml"
         },
         Object: plantPart[0]._id,
         createdAt: 1620388800000
     }),
     new ObjectData({
         Data: {
-            Volume: "55ml"
+            Volume: "57ml"
         },
         Object: plantPart[1]._id,
         createdAt: 1620388800000
@@ -144,7 +144,7 @@ const boundingBoxData = [
         Height: 98,
         Width: 126,
         Color: "yellow",
-        ObjectID: objectData[0]._id
+        ObjectID: objectData[4]._id
     }),
     new BoundingBoxData({ // 20210507/1.png
         X: 29,
@@ -152,7 +152,7 @@ const boundingBoxData = [
         Height: 130,
         Width: 141,
         Color: "yellow",
-        ObjectID: objectData[1]._id
+        ObjectID: objectData[5]._id
     }),
     new BoundingBoxData({ // 20210507/1.png
         X: 302,
@@ -160,7 +160,7 @@ const boundingBoxData = [
         Height: 138,
         Width: 93,
         Color: "red",
-        ObjectID: objectData[4]._id
+        ObjectID: objectData[6]._id
     }),
     new BoundingBoxData({ // 20210507/2.png
         X: 110,
@@ -168,7 +168,7 @@ const boundingBoxData = [
         Height: 96,
         Width: 112,
         Color: "yellow",
-        ObjectID: objectData[0]._id
+        ObjectID: objectData[4]._id
     }),
     new BoundingBoxData({ // 20210507/2.png
         X: 135,
@@ -176,7 +176,7 @@ const boundingBoxData = [
         Height: 120,
         Width: 132,
         Color: "yellow",
-        ObjectID: objectData[1]._id
+        ObjectID: objectData[5]._id
     })
 ]
 
