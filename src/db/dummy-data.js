@@ -12,31 +12,28 @@ import { PlantPart } from "./plant-part-schema"
 const plantPart = [
     new PlantPart({
         EasyId: 0,
-        Name: "Red Tomato"
+        Name: "Red Tomato",
+        createdAt: 1620302400000
     }),
     new PlantPart({
         EasyId: 1,
-        Name: "Red Tomato"
+        Name: "Red Tomato",
+        createdAt: 1620302400000
     }),
     new PlantPart({
         EasyId: 2,
-        Name: "Leaf"
+        Name: "Leaf",
+        createdAt: 1620302400000
     }),
     new PlantPart({
         EasyId: 3,
-        Name: "Leaf"
+        Name: "Leaf",
+        createdAt: 1620302400000
     }),
     new PlantPart({
         EasyId: 4,
-        Name: "Red Tomato"
-    }),
-    new PlantPart({
-        EasyId: 5,
-        Name: "Red Tomato"
-    }),
-    new PlantPart({
-        EasyId: 6,
-        Name: "Leaf"
+        Name: "Leaf",
+        createdAt: 1620388800000
     })
 ]
 
@@ -46,55 +43,64 @@ const objectData = [
         Data: {
             Volume: "65ml"
         },
-        Object: plantPart[0]._id
+        Object: plantPart[0]._id,
+        createdAt: 1620302400000
     }),
     new ObjectData({
         Data: {
             Volume: "55ml"
         },
-        Object: plantPart[1]._id
+        Object: plantPart[1]._id,
+        createdAt: 1620302400000
     }),
     new ObjectData({
         Data: {
             Length: "2.4cm"
         },
-        Object: plantPart[2]._id
+        Object: plantPart[2]._id,
+        createdAt: 1620302400000
     }),
     new ObjectData({
         Data: {
             Length: "2.2cm"
         },
-        Object: plantPart[3]._id
+        Object: plantPart[3]._id,
+        createdAt: 1620302400000
     }),
     new ObjectData({
         Data: {
-            Volume: "65ml"
+            Volume: "66ml"
         },
-        Object: plantPart[4]._id
+        Object: plantPart[0]._id,
+        createdAt: 1620388800000
     }),
     new ObjectData({
         Data: {
-            Volume: "55ml"
+            Volume: "57ml"
         },
-        Object: plantPart[5]._id
+        Object: plantPart[1]._id,
+        createdAt: 1620388800000
     }),
     new ObjectData({
         Data: {
             Length: "4.7cm"
         },
-        Object: plantPart[6]._id
+        Object: plantPart[4]._id,
+        createdAt: 1620388800000
     }),
     new ObjectData({
         Data: {
-            Temperature: "20*C",
+            Temperature: "20°C",
             "Relative Humidity": "29%"
-        }
+        },
+        createdAt: 1620302400000
     }),
     new ObjectData({
         Data: {
-            Length: "19*C",
+            Temperature: "19°C",
             "Relative Humidity": "28%"
-        }
+        },
+        createdAt: 1620388800000
     }),
 ]
 

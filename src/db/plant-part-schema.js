@@ -9,6 +9,15 @@ const plantPartSchema = new Schema({
     timestamps: {}
 });
 
+plantPartSchema.pre('save', function (next) {
+    now = new Date();
+    this.updatedAt = now;
+    if (!this.createdAt) {
+        this.createdAt = now;
+    }
+    next();
+});
+
 const PlantPart = mongoose.model('plant_part', plantPartSchema);
 
 export { PlantPart };

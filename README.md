@@ -21,6 +21,8 @@ npm run init-db
 ```
 DO NOT run this in production as this clears all the data in the database.
 
+WARNING: Command may not work in Windows since there is unix commands used to initialise dummy data. In this case, go to `./public/api` and copy `examples` folder and rename the copy to `images`.
+
 ## Running the server
 Run the command in the working directory to start in development mode.
 ```bash

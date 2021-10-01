@@ -17,7 +17,18 @@ const router = express.Router();
  * If "next()" is called, the next route below that matches will be called. Otherwise, we just end the response.
  * The "use()" function will match ALL HTTP request method types (i.e. GET, PUT, POST, DELETE, etc).
  */
-router.use('/:id', async (req, res, next) => {
+router.use('/id/:id', async (req, res, next) => {
+    const { id } = req.params;
+    if (mongoose.isValidObjectId(id)) {
+        next();
+    }
+    else {
+        res.status(HTTP_BAD_REQUEST)
+            .contentType('text/plain').send('Invalid ID');
+    }
+});
+
+router.use('/envRef/:id', async (req, res, next) => {
     const { id } = req.params;
     if (mongoose.isValidObjectId(id)) {
         next();
@@ -39,9 +50,18 @@ router.get('/', async (req, res) => {
     res.json(await dates.lazyRetrieveAllMonitorDates());
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/id/:id', async (req, res) => {
     const { id } = req.params;
     const date = await dates.trimmedRetrieveById(id);
+
+    if (date) res.json(date);
+    else res.sendStatus(HTTP_NOT_FOUND);
+});
+
+router.get('/envRef/:id', async (req, res) => {
+    const { id } = req.params;
+    if(!id) res.sendStatus(HTTP_BAD_REQUEST);
+    const date = await dates.retrieveByEnvironmentReference(id);
 
     if (date) res.json(date);
     else res.sendStatus(HTTP_NOT_FOUND);
