@@ -104,4 +104,7 @@ dist
 .tern-port
 
 # File Storage for images
-public/api/images
+public/api/images/*.jpg
+public/api/images/*.png
+public/api/images/*/*.jpg
+public/api/images/*/*.png
