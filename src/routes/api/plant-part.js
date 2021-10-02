@@ -58,4 +58,16 @@ router.get('/id/:id', async (req, res) => {
     else res.sendStatus(HTTP_NOT_FOUND);
 });
 
+// TODO: Implement a security feature to limit unauthorised creation.
+router.post('/create', async (req, res) => {
+    const { name, date } = req.query;
+    if(name && name.length > 0){
+        const item = Number.parseInt(date) > -1 ? await parts.createPlantPartWithDate(name, date) : await parts.createPlantPart(name);
+        const easyId = item.EasyId;
+        return res.status(HTTP_CREATED).send(`${easyId}`);
+    }
+
+    return res.status(HTTP_BAD_REQUEST).send('No name supplied.');
+});
+
 export default router;

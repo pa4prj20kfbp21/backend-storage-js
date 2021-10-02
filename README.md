@@ -33,3 +33,31 @@ Or run this code if in production mode:
 ```bash
 npm run production
 ```
+
+## Supported URLS
+GET:
+
+Dates: 
+* `http://localhost:3001/api/dates` - Gets all available dates.
+* `http://localhost:3001/api/dates/id/ID` - Get a date with supplied Object ID.
+* `http://localhost:3001/api/dates/envRef/ID` - Get a date with supplied Environment Reference Object ID.
+
+Images: 
+* `http://localhost:3001/api/images/URL` - Get locally stored image with shortened URL.
+
+Image Info:
+* `http://localhost:3001/api/imageinfo/allinfo/ID` - Fetch information about an image given its ID.
+
+Plant Parts:
+* `http://localhost:3001/api/plant-parts/id/ID` - Fetch a plant part based on its ID
+* `http://localhost:3001/api/plant-parts/query?itemType=TYPE` - Fetch all plant parts based on its TYPE (only option is `fruits`).
+
+Object Data:
+* `http://localhost:3001/api/object-data/info/ID` - Fetch ObjectData based on ints own Object ID.
+* `http://localhost:3001/api/object-data/plant-part/ID` - Get ObjectData info based on the associated Plant Part ID.
+
+POST:
+
+
+* `http://localhost:3001/api/images/image?name=NAME&date=DATE` - Upload image to backend file storage based on its NAME and DATE. DATE is folder name. NAME is filename without extensions.
+* `http://localhost:3001/api/plant-parts/create?name=NAME&date=DATE` - Create a new Plant Part. NAME is the name of the plant part. DATE is optional but modifies created date. Can be useful for stating Fruit bearing time.
