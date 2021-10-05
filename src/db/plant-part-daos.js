@@ -4,6 +4,31 @@ export async function retrieveById(id){
     return await PlantPart.findById(id);
 }
 
+export async function retrieveByEasyId(id){
+    return await PlantPart.find({EasyId: id});
+}
+
+export async function createPlantPart(name){
+    const highEasyId = await retrieveMaxId();
+    const item = new PlantPart({
+        EasyId: highEasyId + 1,
+        Name: name
+    });
+    await PlantPart.insertMany(item);
+    return item;
+}
+
+export async function createPlantPartWithDate(name, date){
+    const highEasyId = await retrieveMaxId();
+    const item = new PlantPart({
+        EasyId: highEasyId + 1,
+        Name: name,
+        createdAt: date
+    });
+    await PlantPart.insertMany(item);
+    return item;
+}
+
 export async function retrieveByObjectType(query){
     const listObjects = await PlantPart.find().sort({EasyId: "asc"});
     const resultList = [];
@@ -14,6 +39,11 @@ export async function retrieveByObjectType(query){
     });
 
     return resultList;
+}
+
+export async function retrieveMaxId(){
+    const data = await PlantPart.find().sort({EasyId: -1}).limit(1);
+    return data ? data[0].EasyId : -1;
 }
 
 export async function trimmedRetrieveById(id){

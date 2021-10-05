@@ -13,6 +13,8 @@ const port = process.env.PORT || 3001;
 
 // Setup body-parser and checker.
 app.use(express.json());
+app.use(express.raw({type: 'image/jpeg'}));
+app.use(express.raw({type: 'image/png'}));
 app.use(cors('*'));
 
 // Setup our routes.
