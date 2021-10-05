@@ -4,6 +4,10 @@ export async function retrieveById(id){
     return await PlantPart.findById(id);
 }
 
+export async function retrieveByEasyId(id){
+    return await PlantPart.find({EasyId: id});
+}
+
 export async function createPlantPart(name){
     const highEasyId = await retrieveMaxId();
     const item = new PlantPart({
