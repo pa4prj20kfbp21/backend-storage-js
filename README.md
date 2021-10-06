@@ -78,7 +78,7 @@ where `NAME` is the name of your file without extensions and `DATE` is the folde
 
 Do this for each image.
 
-Returns the image url which can be slotted in front of `http://localhost:3001/api/images/` to return the image later.
+Returns the image url which can be slotted after this url `http://localhost:3001/api/images/` to return the image later.
 
 2.) OPTIONAL: 
 ```http
