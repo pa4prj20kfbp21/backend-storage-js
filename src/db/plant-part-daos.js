@@ -43,7 +43,7 @@ export async function retrieveByObjectType(query){
 
 export async function retrieveMaxId(){
     const data = await PlantPart.find().sort({EasyId: -1}).limit(1);
-    return data ? data[0].EasyId : -1;
+    return data.length > 0 ? data[0].EasyId : -1;
 }
 
 export async function trimmedRetrieveById(id){
