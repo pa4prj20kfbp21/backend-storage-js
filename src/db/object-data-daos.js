@@ -1,6 +1,13 @@
 import { ObjectData } from "./object-data-schema";
 import * as PlantPart from "./plant-part-daos";
 
+export async function createObjectData(easyId, information){
+    const plantId = await PlantPart.retrieveByEasyId(easyId);
+    const data = new ObjectData({Data: information, Object: plantId[0]._id})
+    await ObjectData.insertMany(data);
+    return eagerConvertToDto(data);
+}
+
 export async function retrieveById(object_id){
     return await ObjectData.findById(object_id);
 }
@@ -35,11 +42,13 @@ async function eagerConvertToDto(objectData){
     if(objectData["Object"]){
         const plantPart = await PlantPart.trimmedRetrieveById(objectData["Object"]);
         return {
+            Id: objectData._id,
             Object: plantPart,
             Data: objectData.Data
         }
     }
     return {
+        Id: objectData._id,
         Data: objectData.Data
     }
 }

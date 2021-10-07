@@ -1,6 +1,5 @@
 import express from 'express';
 import * as dates from '../../db/monitor-dates-daos';
-import * as parts from '../../db/plant-part-daos';
 import mongoose from 'mongoose';
 import { ObjectData } from '../../db/object-data-schema';
 import { BoundingBoxData } from '../../db/bounding-box-schema';
@@ -109,36 +108,16 @@ router.post('/entry', async (req, res) => {
                         Height: 6969,
                         Width: 42,
                         Color: “Green”,
-                        ObjectData: {
-                            EasyId: 2,
-                            ... (other data values)
-                        }
+                        ObjectId: "id"
                     }
                 */
-                const keys = Object.keys(bbox.ObjectData)
-                if(!keys.includes("EasyId")) throw Error("EasyId not found in Object Data!");
-
-                // Check EasyId in range.
-                const easyIdExists = await parts.retrieveMaxId() >= bbox.ObjectData.EasyId;
-                if(!easyIdExists) throw Error("EasyId out of range, create it or use another!");
-
-                let jsonItem = {};
-                for(const key of keys){
-                    if(key.toLowerCase() != "easyid") jsonItem[key] = bbox.ObjectData[key];
-                }
-
-                // Make ObjectData from existing plant part. Note plantID is list even though only 1 item should be returned.
-                const plantId = await parts.retrieveByEasyId(bbox.ObjectData.EasyId);
-                const objData = new ObjectData({Data: jsonItem, Object: plantId[0]._id})
-                listObjectData.push(objData);
-
                 const bboxData = new BoundingBoxData({
                     X:bbox.X,
                     Y:bbox.Y,
                     Height:bbox.Height,
                     Width:bbox.Width,
                     Color:bbox.Color,
-                    ObjectID: objData._id
+                    ObjectID: bbox.ObjectId
                 });
 
                 localBoundingBoxes.push(bboxData._id); // To be added as list of ObjectId for RGBImage.
