@@ -95,21 +95,21 @@ http://localhost:3001/api/dates/entry
 with the request body of the form:
 ```json
 {
-  Date: 134354354, //preferably in UNIX epoch time.
-  Name: “String”, //can be any string.
-  EnvironmentConditions: { JSON any form },
-  RGBImages: [ // List of RGB Images, form below.
+  "Date": 134354354, //preferably in UNIX epoch time.
+  "Name": "String", //can be any string.
+  "EnvironmentConditions": { JSON any form },
+  "RGBImages": [ // List of RGB Images, form below.
     {
-      ImageURL: “/link”, // Obtain from step 1
-      BoundingBoxes: [ // List of Bounding Box JSON
+      "ImageURL": "/link", // Obtain from step 1
+      "BoundingBoxes": [ // List of Bounding Box JSON
         {
-          X: 69,
-          Y: 420,
-          Height: 69,
-          Width: 42,
-          Color: “Green”, // QoL Box Label Customiser, also optional, default is “black”.
-          ObjectData: {
-              EasyId: 2, // Can be from step 2.
+          "X": 69,
+          "Y": 420,
+          "Height": 69,
+          "Width": 42,
+          "Color": "Green", // QoL Box Label Customiser, also optional, default is “black”.
+          "ObjectData": {
+              "EasyId": 2, // Can be from step 2.
               // ... any other key-value format describing plant part.
           }
         }
