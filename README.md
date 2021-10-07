@@ -116,8 +116,8 @@ with the request body of the form:
 ```json
 {
   "Date": 134354354, //preferably in UNIX epoch time.
-  "Name": "Can be any String", //can be any string.
-  "EnvironmentConditions": { "Format": "Plain JSON form with key vvalue string pairs" },
+  "Name": "Can be any String",
+  "EnvironmentConditions": { "Format": "Plain JSON form with key value string pairs" },
   "RGBImages": [ // List of RGB Images, form below.
     {
       "ImageURL": "/obtain_from_step_1",
