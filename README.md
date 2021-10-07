@@ -65,6 +65,7 @@ Image Info:
 
 * `http://localhost:3001/api/images/image?name=NAME&date=DATE` - Upload image to backend file storage based on its NAME and DATE. DATE is folder name. NAME is filename without extensions.
 * `http://localhost:3001/api/plant-parts/create?name=NAME&date=DATE` - Create a new Plant Part. NAME is the name of the plant part. DATE is optional but modifies created date. Can be useful for stating Fruit bearing time.
+* `http://localhost:3001/api/object-data/create` - Creates a list of Object Data info. Multiple data information can be sent in one go.
 * `http://localhost:3001/api/dates/entry` - Creates a new date entry. More information in the next section.
 
 ## How to add a date entry properly:
@@ -86,9 +87,28 @@ http://localhost:3001/api/plant-parts/create?name=NAME&date=DATE
 ``` 
 can be used to create new plant parts with NAME being the name of the plant. DATE is optional but preferrably in UNIX timestamp if doing so.
 
-Returns the `EasyId` that will be useful for the next step.
+Returns the `EasyId` that will be useful for the next step. This step can be skipped if no new plant parts introduced.
 
-3.) Post the metadata needed for said images via this URL:
+3.) Add ObjectData of respective plant-part(s) (can request multiple in 1 request) for said day and said image:
+```http
+http://localhost:3001/api/object-data/create
+```
+Request format to take the form (can have 1 or more than 2 JSON in the list depending on plant-part being updated):
+```json
+[
+    {
+        "EasyId": 0,
+        "Volume": "56ml" 
+    },
+    {
+        "EasyId": 1,
+        "Volume": "61ml" 
+    }
+]
+```
+Returns the eager fetched ObjectDatas. The supplied ID fields are useful for linking ObjectID in the next step.
+
+4.) Post the metadata needed for said images via this URL:
 ```http
 http://localhost:3001/api/dates/entry
 ```
@@ -96,11 +116,11 @@ with the request body of the form:
 ```json
 {
   "Date": 134354354, //preferably in UNIX epoch time.
-  "Name": "String", //can be any string.
-  "EnvironmentConditions": { JSON any form },
+  "Name": "Can be any String", //can be any string.
+  "EnvironmentConditions": { "Format": "Plain JSON form with key vvalue string pairs" },
   "RGBImages": [ // List of RGB Images, form below.
     {
-      "ImageURL": "/link", // Obtain from step 1
+      "ImageURL": "/obtain_from_step_1", // 
       "BoundingBoxes": [ // List of Bounding Box JSON
         {
           "X": 69,
@@ -108,10 +128,7 @@ with the request body of the form:
           "Height": 69,
           "Width": 42,
           "Color": "Green", // QoL Box Label Customiser, also optional, default is “black”.
-          "ObjectData": {
-              "EasyId": 2, // Can be from step 2.
-              // ... any other key-value format describing plant part.
-          }
+          "ObjectId": "ObjectID depending on step 3"
         }
       ]
     }
@@ -131,33 +148,6 @@ Example valid JSON format:
     },
     "RGBImages": [
         {
-            "ImageURL": "20210506/1.png",
-            "BoundingBoxes": [
-                {
-                    "X": 80,
-                    "Y": 204,
-                    "Height": 135,
-                    "Width": 132,
-                    "Color": "yellow",
-                    "ObjectData": {
-                        "EasyId": 1,
-                        "Volume": "200ml"
-                    }
-                },
-                {
-                    "X": 196,
-                    "Y": 177,
-                    "Height": 120,
-                    "Width": 128,
-                    "Color": "yellow",
-                    "ObjectData": {
-                        "EasyId": 0,
-                        "Volume": "198ml"
-                    }
-                }
-            ]
-        },
-        {
             "ImageURL": "20210507/1.png",
             "BoundingBoxes": [
                 {
@@ -166,10 +156,7 @@ Example valid JSON format:
                     "Height": 135,
                     "Width": 132,
                     "Color": "yellow",
-                    "ObjectData": {
-                        "EasyId": 1,
-                        "Volume": "200ml"
-                    }
+                    "ObjectId": "id1"
                 },
                 {
                     "X": 196,
@@ -177,13 +164,52 @@ Example valid JSON format:
                     "Height": 120,
                     "Width": 128,
                     "Color": "yellow",
-                    "ObjectData": {
-                        "EasyId": 0,
-                        "Volume": "198ml"
-                    }
+                    "ObjectId": "id2"
+                }
+            ]
+        },
+        {
+            "ImageURL": "20210507/2.png",
+            "BoundingBoxes": [
+                {
+                    "X": 80,
+                    "Y": 204,
+                    "Height": 135,
+                    "Width": 132,
+                    "Color": "yellow",
+                    "ObjectId": "id3"
+                },
+                {
+                    "X": 196,
+                    "Y": 177,
+                    "Height": 120,
+                    "Width": 128,
+                    "Color": "yellow",
+                    "ObjectId": "id4"
                 }
             ]
         }
     ]
 }
+```
+Assuming returned response body from step 3 is of the form (not all fields are shown, just the relevant ones):
+```json
+[
+    {
+        "Id": "id1",
+        ...
+    },
+    {
+        "Id": "id2",
+        ...
+    },
+    {
+        "Id": "id3",
+        ...
+    },
+    {
+        "Id": "id4",
+        ...
+    }
+]
 ```
