@@ -120,7 +120,7 @@ with the request body of the form:
   "EnvironmentConditions": { "Format": "Plain JSON form with key vvalue string pairs" },
   "RGBImages": [ // List of RGB Images, form below.
     {
-      "ImageURL": "/obtain_from_step_1", // 
+      "ImageURL": "/obtain_from_step_1",
       "BoundingBoxes": [ // List of Bounding Box JSON
         {
           "X": 69,
