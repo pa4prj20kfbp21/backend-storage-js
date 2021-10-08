@@ -32,10 +32,10 @@ async function main() {
     const imageStorePath = path.join(__dirname.replace('/src/db', '/public/api')); 
     if(!existsSync(imageStorePath + '/images')){
         mkdirSync(imageStorePath + '/images', 0o744);
-
-        // Unix command, may not work on Windows. Pull examples to storage.
-        execSync(`cp -r ${imageStorePath + '/examples/*'} ${imageStorePath + '/images'}`) 
     }
+
+    // Unix command, may not work on Windows. Pull examples to storage.
+    execSync(`cp -r ${imageStorePath + '/examples/*'} ${imageStorePath + '/images'}`) 
 }
 
 async function clearDatabase() {
