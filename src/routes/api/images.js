@@ -15,20 +15,20 @@ const router = express.Router();
 // TODO: Implement a way to prevent unauthorised access to this method.
 router.post('/image', async (req, res) => {
     const { name, date } = req.query;
+    const s = __dirname.indexOf('/') >= 0 ? '/' : '\\';
 
     if(!req.body) return res.status(HTTP_BAD_REQUEST).send("Missing picture!");
     if(!name) return res.status(HTTP_BAD_REQUEST).send("Missing name query!");
     if(!date) return res.status(HTTP_BAD_REQUEST).send("Missing date query!");
 
-    let directory = path.join(__dirname.replace('src/routes/api', `public/api/images/${date}`));
-
+    let directory = path.join(__dirname.replace(`src${s}routes${s}api`, `public${s}api${s}images${s}${date}`));
     
     if(!existsSync(directory)) mkdirSync(directory);
 
     const contentType = req.rawHeaders.at(req.rawHeaders.length - 1);
     const fileExtension = contentType.slice(contentType.indexOf('/') + 1);
 
-    directory = directory + `/${name}.${fileExtension}`;
+    directory = directory + `${s}${name}.${fileExtension}`;
 
     if(existsSync(directory)) {
         return res.status(HTTP_BAD_REQUEST).send(`/${date}/${name}.${fileExtension} already exists.`);
