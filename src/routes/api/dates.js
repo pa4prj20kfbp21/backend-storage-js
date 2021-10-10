@@ -78,6 +78,8 @@ router.post('/entry', async (req, res) => {
     let listBoundingBox = [];
     let listRGBImage = [];
 
+    const dateSync = jsonBody.Date || Date.now();
+
     try{
         /*
             Assume the format input has a generic body of:
@@ -130,11 +132,11 @@ router.post('/entry', async (req, res) => {
         }
 
         // Push environment conditions 
-        const envConditions = new ObjectData({Data: jsonBody.EnvironmentConditions});
+        const envConditions = new ObjectData({Data: jsonBody.EnvironmentConditions, createdAt: dateSync});
         listObjectData.push(envConditions);
 
         const monitorDate = new MonitorDates({
-            MonitorDate: jsonBody.Date,
+            MonitorDate: dateSync,
             Name: jsonBody.Name,
             EnvironmentConditions: envConditions._id,
             RGBImages: localRGBImage

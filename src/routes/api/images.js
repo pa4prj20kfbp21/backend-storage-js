@@ -31,7 +31,7 @@ router.post('/image', async (req, res) => {
     directory = directory + `/${name}.${fileExtension}`;
 
     if(existsSync(directory)) {
-        return res.status(HTTP_BAD_REQUEST).send(JSON.stringify(req.query));
+        return res.status(HTTP_BAD_REQUEST).send(`/${date}/${name}.${fileExtension} already exists.`);
     }
 
     writeFileSync(directory, req.body);
