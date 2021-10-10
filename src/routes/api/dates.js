@@ -134,7 +134,7 @@ router.post('/entry', async (req, res) => {
         listObjectData.push(envConditions);
 
         const monitorDate = new MonitorDates({
-            MonitorDate: jsonBody.Date,
+            MonitorDate: jsonBody.Date || Date.now(),
             Name: jsonBody.Name,
             EnvironmentConditions: envConditions._id,
             RGBImages: localRGBImage

@@ -3,7 +3,17 @@ import * as PlantPart from "./plant-part-daos";
 
 export async function createObjectData(easyId, information){
     const plantId = await PlantPart.retrieveByEasyId(easyId);
-    const data = new ObjectData({Data: information, Object: plantId[0]._id})
+
+    const keys = Object.keys(information);
+
+    const reqInformation = {};
+    for(const key of keys){
+        if(key != "createdAt") reqInformation[key] = information[key];
+    }
+
+    const data = keys.includes("createdAt") ? 
+        new ObjectData({Data: reqInformation, Object: plantId[0]._id, createdAt: information["createdAt"]}) : 
+        new ObjectData({Data: reqInformation, Object: plantId[0]._id});
     await ObjectData.insertMany(data);
     return eagerConvertToDto(data);
 }

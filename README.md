@@ -108,6 +108,19 @@ Request format to take the form (can have 1 or more than 2 JSON in the list depe
 ```
 Returns the eager fetched ObjectDatas. The supplied ID fields are useful for linking ObjectID in the next step.
 
+You can also for each ObjectData add a `createdAt` field with the unix epoch time.
+```json
+[
+    {
+        "EasyId": 0,
+        "Volume": "56ml",
+        "createdAt": 1620399800000
+    }
+]
+```
+
+Highly recommended to use the same epoch value for the Date section of the next step to keep entry consistent.
+
 4.) Post the metadata needed for said images via this URL:
 ```http
 http://localhost:3001/api/dates/entry
@@ -115,7 +128,7 @@ http://localhost:3001/api/dates/entry
 with the request body of the form:
 ```json
 {
-  "Date": 134354354, //preferably in UNIX epoch time.
+  "Date": 134354354, // Preferably in UNIX epoch time. Optional, otherwise uses created time.
   "Name": "Can be any String", //can be any string.
   "EnvironmentConditions": { "Format": "Plain JSON form with key vvalue string pairs" },
   "RGBImages": [ // List of RGB Images, form below.
