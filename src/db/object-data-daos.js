@@ -34,15 +34,15 @@ export async function retrieveAllByPlantID(plant_id){
 
     try{
         for(i = 0; i < data.length; i++){
-            const extraData = result.filter(res => res.createdAt.getDay() === data[i].createdAt.getDay());
-            if(extraData){
+            const extraData = result.filter(res => Date(res.createdAt) === Date(data[i].createdAt));
+            if(extraData.length > 0){
                 const keys = Object.keys(extraData[0].Data);
                 for(const key of keys) data[i].Data[key] = extraData[0].Data[key];
                 data[i].Data["EnvironmentRef"] = extraData[0]._id;
             }
         }
     }catch(e){
-        console.log("Not working!");
+        console.log(e);
     };
     
     return data;
