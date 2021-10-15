@@ -34,7 +34,9 @@ export async function retrieveAllByPlantID(plant_id){
 
     try{
         for(i = 0; i < data.length; i++){
-            const extraData = result.filter(res => Date(res.createdAt) === Date(data[i].createdAt));
+            const extraData = result.filter(res => {
+                return new Date(res.createdAt).getTime() === new Date(data[i].createdAt).getTime()
+            });
             if(extraData.length > 0){
                 const keys = Object.keys(extraData[0].Data);
                 for(const key of keys) data[i].Data[key] = extraData[0].Data[key];
